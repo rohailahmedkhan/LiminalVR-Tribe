@@ -1,0 +1,24 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Movement : MonoBehaviour
+{
+    public float speed = 10.0f;
+    public float turnspeed = 100.0f;
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        float h = Input.GetAxis("Horizontal");
+        float v = Input.GetAxis("Vertical");
+        transform.position += v * speed * Time.deltaTime * transform.forward;
+        transform.rotation *= Quaternion.AngleAxis(h * turnspeed * Time.deltaTime, transform.up);
+
+    }
+}
