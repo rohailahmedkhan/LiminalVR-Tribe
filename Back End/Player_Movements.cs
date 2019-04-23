@@ -4,23 +4,24 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    // movement speed of Player
     public float speed = 0.9f;
-    private Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Movement of Player in each frame
         transform.position += Vector3.left * Time.deltaTime * speed;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        // destroying the monsters on collison.. Not required just experiments..
         if(collision.gameObject.name != "ground")
         {
             Destroy(collision.gameObject);
