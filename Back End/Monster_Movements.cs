@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Monster : MonoBehaviour
+public class Monster_Movements : MonoBehaviour
 {
     // Getting Current Position of Player
     GameObject target;
 
     // Movement speed for Monsters
-    public float speed = 0.5f;
+    float speed = 1.5f;
     // Start is called before the first frame update
+
     void Start()
     {
         
@@ -18,6 +19,9 @@ public class Monster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // checking current position of monster is out of plane or not..
+        if (transform.position.y < 0) { Destroy(gameObject); }
+        
         // finding and setting current position of the player
         target = GameObject.Find("Player");
 
