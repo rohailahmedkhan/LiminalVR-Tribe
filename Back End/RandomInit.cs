@@ -4,48 +4,51 @@ using UnityEngine;
 
 public class RandomInit : MonoBehaviour
 {
-    GameObject mypref;
-    GameObject player;
-    GameObject ground;
-    int MaxMonster = 6;
-    int clonecount = 0;
+    // Creating variables to track real time changes 
+    GameObject mypref, player;
+    // Max Monsters to appear and current monster count as cloning of the objects
+    int MaxMonster = 6, clonecount = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        ground = GameObject.Find("ground");
+        // Creating monsters at run time
         RandomMonster();
     }
 
     // Update is called once per frame
     void Update()
     {
+        // getting current count of monsters at frame
         var NumberOfObjects = GameObject.FindGameObjectsWithTag("RandMonster");
 
+        // Checking current number of monsters with max required number of monsters..
         if (NumberOfObjects.Length < MaxMonster)
         {
+            // getting current monsters count
             clonecount = NumberOfObjects.Length;
+            // Creating new monsters as required
             RandomMonster();
         }
     }
-
+    // To Randomly generate monster
     void RandomMonster()
     {
         // Specifing object to Init as Monster or anything... 
         mypref = GameObject.Find("Cube");
         player = GameObject.Find("Player");
-        for (int i = clonecount; clonecount < MaxMonster ; i++)
-        {
-            CreateMonster();
-            clonecount++;
-        }
+
+        // Calling method to call create monsters
+        CreateMonster();
+        // Increasing current monster count by one
+        clonecount++;
     }
 
+    // To Create Monster at runtime
     void CreateMonster()
     {
         // Position Assignment
         float x, y, z;
-        Debug.Log(player.transform.position);
         x = player.transform.position.x - 15.0f - Random.Range(-1f, 1f) * 5;
         y = player.transform.position.y + 1;
         z = Random.Range(-1.5f, 1.5f) * 5;
