@@ -1,3 +1,4 @@
+//with gun.cs 
 void Update(){
     if(Input.GetButtonDown("Fire1"))
     {
