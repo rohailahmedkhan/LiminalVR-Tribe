@@ -22,24 +22,28 @@ public class End : MonoBehaviour
         {
             GameObject plyr = GameObject.Find("Player"); // taking current position
             set++; // Changing set to next level..
-            var oldPosition = transform.position; // Saving the current position of End object
+            plyr.transform.position = transform.position; // Saving the current position of End object
+
+
+            plyr.GetComponent<Player>().ChangeSet(set); // Calling Change set function of Player
             // Transformation according to sets
             if (set == 6)
-                { transform.position = new Vector3(262.38f, transform.position.y, 019.77f); angle = -90.0f; }
+                { transform.position = new Vector3(262.38f, transform.position.y,  19.77f); }
             if (set == 5)
-                { transform.position = new Vector3(262.38f, transform.position.y, -34.77f); angle = 090.0f; }
+                { transform.position = new Vector3(262.38f, transform.position.y, -34.77f); }
             if (set == 4)
-                { transform.position = new Vector3(218.34f, transform.position.y, -34.77f); angle = -90.0f; }
+                { transform.position = new Vector3(218.34f, transform.position.y, -34.77f); }
             if (set == 3)
-                { transform.position = new Vector3(218.34f, transform.position.y, -62.77f); angle = -90.0f; }
+                { transform.position = new Vector3(218.34f, transform.position.y, -62.77f); }
             if (set == 2)
-                { transform.position = new Vector3(159.20f, transform.position.y, -62.77f); angle = 090.0f; }
+                { transform.position = new Vector3(159.20f, transform.position.y, -62.77f); }
             if (set == 1)
-                { transform.position = new Vector3(159.20f, transform.position.y, -26.77f); angle = 000.0f; }
+                { transform.position = new Vector3(159.20f, transform.position.y, -26.77f); }
 
             Debug.Log("Collision Enter from Trigger" + (set)); // Checking purpose
-            plyr.transform.RotateAround(oldPosition, rotation, angle); //Rotation for the player 
-            plyr.GetComponent<Player>().ChangeSet(set); // Calling Change set function of Player
+            // plyr.transform.position = oldPosition;
+            // plyr.transform.RotateAround(oldPosition, rotation, angle); //Rotation for the player 
+            
         }
         
     }

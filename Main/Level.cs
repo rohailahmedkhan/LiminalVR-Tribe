@@ -29,22 +29,22 @@ public class Level : ILevel
         // Updates Specific to Level
         switch (LevelName) {
             case "Set_0":
-                this.speed = 10.00f;
+                this.speed = 1.25f;
                 this.mspeed = 0.00f;
                 this.maxMonsters = 3;
                 this.cloneMonsters = 0;
                 this.monsterLife = 2;
                 break;
             case "Set_1":
-                this.speed = 10.25f;
+                this.speed = 1.5f;
                 this.mspeed = 0.10f;
                 this.maxMonsters = 4;
                 this.cloneMonsters = 0;
                 this.monsterLife = 6;
                 break;
             case "Set_2":
-                this.speed = 1.50f;
-                this.mspeed = 0.20f;
+                this.speed = 1.75f;
+                this.mspeed = 2.0f;
                 this.maxMonsters = 5;
                 this.cloneMonsters = 0;
                 this.monsterLife = 8;
@@ -57,21 +57,21 @@ public class Level : ILevel
                 this.monsterLife = 8;
                 break;
             case "Set_4":
-                this.speed = 2.00f;
+                this.speed = 2f;
                 this.mspeed = 0.40f;
                 this.maxMonsters = 7;
                 this.cloneMonsters = 0;
                 this.monsterLife = 8;
                 break;
             case "Set_5":
-                this.speed = 2.25f;
+                this.speed = 2.5f;
                 this.mspeed = 0.50f;
                 this.maxMonsters = 7;
                 this.cloneMonsters = 0;
                 this.monsterLife = 8;
                 break;
             case "Set_6":
-                this.speed = 2.50f;
+                this.speed = 3.0f;
                 this.mspeed = 0.60f;
                 this.maxMonsters = 8;
                 this.cloneMonsters = 0;

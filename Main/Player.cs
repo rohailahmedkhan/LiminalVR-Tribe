@@ -17,6 +17,9 @@ public class Player : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, level.EndObject.transform.position,
             level.PlayerSpeed * Time.deltaTime); // Player movement towards end object
+
+        
+
     }
 
     public void ChangeSet(int set)
