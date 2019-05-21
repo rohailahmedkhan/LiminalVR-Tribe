@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class RandInit : MonoBehaviour
 {
-    ILevel level; // Creating object of Interface Class..
-    GameObject player; // Getting Current player position..
+    ILevel level;
+    GameObject player;
     
     void Start()
     {
@@ -55,7 +55,7 @@ public class RandInit : MonoBehaviour
         // Attach Tag
         RandObj.tag = "RandMonster";
         RandObj.GetComponent<Renderer>().enabled = true;
-        RandObj.GetComponent<Rigidbody>().mass = level.MonsterMass;
+        // RandObj.GetComponent<Rigidbody>().mass = level.MonsterMass;
         RandObj.isStatic = false;
         // Attach Script
         RandObj.AddComponent<Monster>();

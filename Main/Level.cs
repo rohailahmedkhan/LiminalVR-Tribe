@@ -11,58 +11,77 @@ public interface ILevel
     string SceneName { set; get; } // To set Scene Name based on Levels
     int MaxMonsters { set; get; } // Number of Maximum Monsters in a Level
     int CloneMonsters { set; get; } // Number of Monsters currently in a game
-    int MonsterMass { set; get; } // Setting Monsters Mass
+    int MonsterLife { set; get; } // Setting Monsters Mass
 }
 
 public class Level : ILevel
 {
-    string scene; // Storing Scene Name
-    float speed, mspeed; // Storing player speed and monster speed to player
-    GameObject target, playerN; // Storing target information and player information
-    int maxMonsters, cloneMonsters, monsterMass; // Storing maximum monster on game at a time, current number of monsters and
-    // life of monsters per Level though there will be changes...
+    string scene;
+    float speed, mspeed;
+    GameObject target, playerN;
+    int maxMonsters, cloneMonsters, monsterLife;
 
-
-    // Setting up default constructor with default scene name as Level 1
-    public Level (string LevelName = "Level_1")
-    {
-        // Getting the current scene name
-        this.SceneName = SceneManager.GetActiveScene().name;
-        
-        // Updating the current scene name
+    public Level (string LevelName = "Set_0")
+    {        
+        // Updating the current set name
         this.SceneName = LevelName;
 
         // Updates Specific to Level
         switch (LevelName) {
-            case "Level_1": // Specifications for Level 1
-                this.speed = 0.08f;
-                this.mspeed = 0.07f;
+            case "Set_0":
+                this.speed = 10.00f;
+                this.mspeed = 0.00f;
+                this.maxMonsters = 3;
+                this.cloneMonsters = 0;
+                this.monsterLife = 2;
+                break;
+            case "Set_1":
+                this.speed = 10.25f;
+                this.mspeed = 0.10f;
+                this.maxMonsters = 4;
+                this.cloneMonsters = 0;
+                this.monsterLife = 6;
+                break;
+            case "Set_2":
+                this.speed = 1.50f;
+                this.mspeed = 0.20f;
                 this.maxMonsters = 5;
                 this.cloneMonsters = 0;
-                this.monsterMass = 4;
+                this.monsterLife = 8;
                 break;
-            case "Level_2":// Specifications for Level 2
-                this.speed = 0.15f;
-                this.mspeed = 0.07f;
+            case "Set_3":
+                this.speed = 1.75f;
+                this.mspeed = 0.30f;
+                this.maxMonsters = 6;
+                this.cloneMonsters = 0;
+                this.monsterLife = 8;
+                break;
+            case "Set_4":
+                this.speed = 2.00f;
+                this.mspeed = 0.40f;
                 this.maxMonsters = 7;
                 this.cloneMonsters = 0;
-                this.monsterMass = 6;
+                this.monsterLife = 8;
                 break;
-            case "Level_3":// Specifications for Level 3
-                this.speed = 0.2f;
-                this.mspeed = 0.07f;
-                this.maxMonsters = 9;
+            case "Set_5":
+                this.speed = 2.25f;
+                this.mspeed = 0.50f;
+                this.maxMonsters = 7;
                 this.cloneMonsters = 0;
-                this.monsterMass = 8;
+                this.monsterLife = 8;
+                break;
+            case "Set_6":
+                this.speed = 2.50f;
+                this.mspeed = 0.60f;
+                this.maxMonsters = 8;
+                this.cloneMonsters = 0;
+                this.monsterLife = 8;
                 break;
         }
-
-        // Getting position to end the level..
         this.EndObject = GameObject.Find("End");
     }
 
-    //Implementing Properties from Interface
-    public float PlayerSpeed { 
+    public float PlayerSpeed {
         get { return speed; }
         set { speed = value; }
     }
@@ -95,9 +114,9 @@ public class Level : ILevel
         set { cloneMonsters = value; }
     }
 
-    public int MonsterMass
+    public int MonsterLife
     {
-        get { return monsterMass; }
-        set { monsterMass = value; }
+        get { return monsterLife; }
+        set { monsterLife = value; }
     }
 }

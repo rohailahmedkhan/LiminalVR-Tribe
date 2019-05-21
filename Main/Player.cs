@@ -5,27 +5,30 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    ILevel level; // Creating object of Interface Class..
+    ILevel level;
 
     void Start()
     {
-        level = new Level(SceneManager.GetActiveScene().name); // Initialising with Level Class.. for specific levels..
+        level = new Level("Set_0"); // setting initial set on load
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Moving towards the end object of Respected Level..
         transform.position = Vector3.MoveTowards(transform.position, level.EndObject.transform.position,
-            level.PlayerSpeed );
+            level.PlayerSpeed * Time.deltaTime); // Player movement towards end object
+    }
 
-        // Checking if Player reached to the position of End Object to Load Next Level or End the VR Experience..
-        if (level.EndObject.transform.position.x - 1 < this.transform.position.x)
+    public void ChangeSet(int set)
+    {
+        level = new Level("Set_" + set); // Changing required Logic as per set changes
+        if (level.SceneName == "Set_7")
         {
-            // level.EndObject = GameObject.Find("End_2");
-            Application.Quit(); // Quiting the Application - will be changed once other Level's are developed..
+            Application.Quit(); // Ending the game
         }
     }
 
-    
+    public string GetCurrentSetName() { return level.SceneName; } // Returning Active Set Name
+
+
 }
