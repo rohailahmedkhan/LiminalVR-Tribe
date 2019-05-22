@@ -10,14 +10,18 @@ public class Monster : MonoBehaviour
     
     void Start()
     {
-        level = new Level(SceneManager.GetActiveScene().name); // Assigning Inherited methods of Level Class to Interface
+        target = GameObject.Find("Player"); // getting current position of player
+        level = new Level(target.GetComponent<Player>().GetCurrentSetName()); // Assigning Inherited methods of Level Class to Interface
+        Debug.Log("Monster Loaded: " + level.SceneName);
     }
 
     void Update()
     {
-        target = GameObject.Find("Player"); // getting current position of player
+        target = GameObject.Find("Player"); // getting current position of player     
         // Movement towards Player..
-        transform.position = Vector3.MoveTowards(transform.position, target.transform.position, level.MonsterSpeed); 
+        transform.position = Vector3.MoveTowards(transform.position, target.transform.position, level.MonsterSpeed * Time.deltaTime);
+
+        transform.LookAt(target.transform);
     }
 
     private void OnCollisionEnter(Collision collision) // Collision Event - will be updated once Monsters are developed
@@ -28,6 +32,11 @@ public class Monster : MonoBehaviour
 
         }
         else { Destroy(this.gameObject); }*/
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        
     }
 
 }

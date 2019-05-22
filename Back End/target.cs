@@ -1,18 +1,24 @@
-//with gun.cs 
-void Update(){
-    if(Input.GetButtonDown("Fire1"))
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Target : MonoBehaviour
+{
+    // Start is called before the first frame update
+  
+  public float health =50f;
+  public void TakeDamage(float amount){
+	  health-=amount;
+	  
+  }
+  
+	 void OnTriggerEnter(Collider collision)
     {
-        Shoot();
-    }
+if(health<=0f && collision.gameObject.tag == "ps"){
+		  	  Destroy(gameObject);
+
+	  }
 }
-void Shoot(){
-    RaycastHit hit;
-    if(Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward,out hit, range))
-    {
-        Debug.Log(hit.transform.name);
-        Target target=hit.transform.GetComponent<Target>();
- if(target!=null){
-     target.TakeDamage(damage);
- }
-    }
-}
+  
+  
+  }
