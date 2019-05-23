@@ -15,7 +15,7 @@ private float next_timetofire=0f;
    
     // Update is called once per frame
     void Update(){
-    if(Input.GetButtonDown("Fire1")&&Time.time>=next_timetofire)
+    if((GvrControllerInput.ClickButtonDown)&&Time.time>=next_timetofire)
     {
         next_timetofire=Time.time+1f/fire_Rate;
 
